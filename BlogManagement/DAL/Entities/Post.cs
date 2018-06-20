@@ -14,7 +14,7 @@ namespace BlogManagement.DAL.Entities
         public DateTime DatePost { get; set; }
         public String Content { get; set; }
         public String Image { get; set; }
-        public int Like { get; set; }
+        public int Likes { get; set; }
 
         public Post()
         {
@@ -29,7 +29,7 @@ namespace BlogManagement.DAL.Entities
             DatePost = datePost;
             Content = content;
             Image = image;
-            Like = like;
+            Likes = like;
         }
 
         public IEnumerable<Comment> Comments { get; set; }

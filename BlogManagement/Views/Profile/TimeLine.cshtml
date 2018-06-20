@@ -3,8 +3,85 @@
     ViewBag.Title = "TimeLine";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+@model IEnumerable<BlogManagement.Models.PostModel>
+
+<style>
+    .img-user{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .div-img-user {
+        padding: 2px;
+        text-align: center;
+    }
+    .div-content-user {
+        padding: 2px;
+    }
+    .cmt {
+        vertical-align: middle;
+    }
+    .user-cmt{
+        display: flex;
+    }
+    .div-img-user-cmt {
+        padding-left: 10px;
+        text-align: center;
+    }
+    .div-img-user-cmt>img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    .div-right-user-cmt {
+        padding-left: 5px;
+    }
+    .div-right-user-cmt>p{
+        padding-top: 5px;
+    }
+
+</style>
 
 <div>
-    
+    @foreach (var item in Model)
+    {
+    <div style="background-color: aliceblue" class="col-md-10">
+        <div class="col-md-1 div-img-user">
+            <img class="img-user" src="~/Images/user_default.png" />
+        </div>
+        <div class="col-md-11 div-content-user">
+            <p>@item.UserName <span class="glyphicon glyphicon-play"></span> @item.CategoryName</p>
+            <p>@item.DatePost</p>
+        </div>
+        <div>
+            @item.Content
+        </div>
+        <div>
+            <img src="~/Images/@item.Image" alt="Image" />
+        </div>
+        <div style="padding: 5px;">
+            <textarea class="cmt" cols="80" rows="2" placeholder="Bình luận...."></textarea>
+            <button class="btn btn-info cmt">Bình luận</button>
+        </div>
+        @if (ViewBag.lstComment != null)
+        {
+            foreach (var cmt in ViewBag.lstComment)
+            {
+                <div>
+                    <div class="row user-cmt">
+                        <div class="div-img-user-cmt">
+                            <img src="~/Images/@item.AccountImage" />
+                        </div>
+                        <div class="div-right-user-cmt">
+                            <p>@ViewBag.lstComment[item.PostId].UserName</p>
+                        </div>
+                    </div>
+                    <p>@ViewBag.lstComment[item.PostId].Content</p>
+                </div>
+            }
+        }
+
+    </div>
+    }
 </div>
 

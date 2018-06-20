@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using BlogManagement.DAL.Entities;
+using BlogManagement.Models;
 
 namespace BlogManagement.DAL.Repository
 {

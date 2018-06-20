@@ -62,6 +62,11 @@ namespace BlogManagement.BLL
                 return null;
             }
         }
+
+        public String getUserNameById(int id)
+        {
+            return getById(id).UserName;
+        }
         
     }
 }
