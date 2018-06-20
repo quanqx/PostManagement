@@ -1,11 +1,50 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
+<div>@Html.Action("CreatePostPartial", "Home")</div>
 <ul>
     @foreach (BlogManagement.DAL.Entities.Post lst in ViewBag.lst)
     {
         <li style="list-style:none"><a href="/Post/Category/?id=@lst.PostId">@lst.Title</a></li>
     }
 </ul>
+
+@*<div>
+    @foreach (var item in Model)
+    {
+        <div style="background-color: aliceblue" class="col-md-10">
+            <div class="col-md-1 div-img-user">
+                <img class="img-user" src="~/Images/user_default.png" />
+            </div>
+            <div class="col-md-11 div-content-user">
+                <p>@item.UserName <span class="glyphicon glyphicon-play"></span> @item.CategoryName</p>
+                <p>@item.DatePost</p>
+            </div>
+            <div>
+                @item.Content
+            </div>
+            <div>
+                <img src="" alt="Image" />
+            </div>
+            <div style="padding: 5px;">
+                <textarea class="cmt" cols="80" rows="2" placeholder="Bình luận...."></textarea>
+                <button class="btn btn-info cmt">Bình luận</button>
+            </div>
+            @foreach (var cmt in item.Comments)
+            {
+                <div>
+                    <div class="row user-cmt">
+                        <div class="div-img-user-cmt">
+                            <img src="~/Images/@item.AccountImage" />
+                        </div>
+                        <div class="div-right-user-cmt">
+                            <p>@cmt.AccountId</p>
+                        </div>
+                    </div>
+                    <p>@cmt.Content</p>
+                </div>
+            }
+        </div>
+    }
+</div>*@

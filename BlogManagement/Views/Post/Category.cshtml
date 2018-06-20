@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Category</h2>
+
+<ul>
+    @foreach (BlogManagement.DAL.Entities.Post lst in ViewBag.lstCategory)
+    {
+        <li style="list-style:none"><a href="/Post/Category/?id=@lst.CategoryId">@lst.Title</a></li>
+    }
+</ul>

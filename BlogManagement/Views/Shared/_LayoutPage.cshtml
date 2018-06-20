@@ -22,13 +22,13 @@
     <script src="~/Content/Register.js"></script>
 
 </head>
-<body>
-    @Html.Action("CreatePostPartial", "Home")
+<body style="background-color:#f4f3f8">
+    
     @Html.Action("navPartial", "Home")
-    <div class="col-md-2" style="border:1px solid;border-color:cornflowerblue">
+    <div class="col-md-3" style="border:1px solid;border-color:cornflowerblue">
         @Html.Action("NavLeftPartial", "Home")
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
         @RenderBody()
     </div>
 </body>

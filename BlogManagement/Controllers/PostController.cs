@@ -41,11 +41,18 @@ namespace BlogManagement.Controllers
             }
             return "";
         }
-        public ActionResult MyProfile(int page = 1)
+        public ActionResult MyProfile()
         {
             AccountBLL account = new AccountBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
-            PostBLL post = new PostBLL(new DAL.UnitOfWork.UnitOfWork(new DAL.Entities.BlogDBContext()));
+            PostBLL post = new PostBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
+
             ViewBag.lst = post.getPostsByAccountId(account.getByEmail(User.Identity.Name).AccountId);
+            return View();
+        }
+        public ActionResult Category(int id)
+        {
+            PostBLL post = new PostBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
+            ViewBag.lstCategory = post.getPostByCategoryId(id);
             return View();
         }
     }

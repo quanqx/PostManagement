@@ -6,6 +6,7 @@
 
 <h2>MyProfile</h2>
 
+<div>@Html.Action("CreatePostPartial", "Home")</div>
 <ul>
     @foreach (BlogManagement.DAL.Entities.Post lst in ViewBag.lst)
     {

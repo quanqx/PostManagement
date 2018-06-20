@@ -1,7 +1,35 @@
 ﻿
-<ul>
+<ul class="menu-left">
+    <li style="list-style:none"><a href="/Home/Index">Hiển thị tất cả danh sách</a></li>
     @foreach (BlogManagement.DAL.Entities.Category lst in ViewBag.lstCategory)
     {
         <li style="list-style:none"><a href="/Post/Category/?id=@lst.CategoryId">@lst.Name</a></li>
     }
+
 </ul>
+<style>
+    .menu-left li :hover {
+        text-decoration: none;
+        background-color: cornflowerblue;
+    }
+
+    .menu-left li {
+        margin: 0 auto;
+        height: 50px;
+        color: deepskyblue;
+    }
+
+        .menu-left li:hover a {
+            color: white;
+            font-weight: bold;
+        }
+
+    .menu-left li > a {
+        padding:11px;
+        height: 50px;
+        display: block;
+    }
+    .menu-left {
+        padding: 0;
+    }
+</style>

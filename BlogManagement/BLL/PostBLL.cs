@@ -53,5 +53,13 @@ namespace BlogManagement.BLL
         {
             return uow.postRepository.getAll().Skip(from).Take(to);
         }
+        public IEnumerable<Post> getPostByCategoryId(int id)
+        {
+            return uow.postRepository.getAll().Where(x => x.CategoryId == id);
+        }
+        public IEnumerable<Post> getPostByCategoryIdAndAccountId(int idCategory, int idAccoutn)
+        {
+            return uow.postRepository.getAll().Where(x => x.CategoryId == idCategory && x.AccountId == idAccoutn);
+        }
     }
 }

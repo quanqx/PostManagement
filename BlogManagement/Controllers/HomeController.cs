@@ -25,8 +25,11 @@ namespace BlogManagement.Controllers
         }
         public ActionResult NavLeftPartial()
         {
+            AccountBLL account = new AccountBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
             CategoryBLL category = new CategoryBLL(new DAL.UnitOfWork.UnitOfWork(new DAL.Entities.BlogDBContext()));
+
             ViewBag.lstCategory = category.getAll();
+            //ViewBag.lstCategoryUser = category.get(account.getByEmail(User.Identity.Name).AccountId);
             return PartialView();
         }
         public ActionResult CreatePostPartial()
@@ -40,7 +43,6 @@ namespace BlogManagement.Controllers
             AccountBLL account = new AccountBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
             PostBLL post = new PostBLL(new DAL.UnitOfWork.UnitOfWork(new BlogDBContext()));
             model.AccountId = account.getByEmail(User.Identity.Name).AccountId;
-            model.CategoryId = 1;
             model.DatePost = DateTime.Now;
             post.Add(model);
             //var strContent = form["txtContent"].ToString();//FormCollection form
