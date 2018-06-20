@@ -23,11 +23,12 @@
 
 </head>
 <body>
+    @Html.Action("CreatePostPartial", "Home")
     @Html.Action("navPartial", "Home")
-    <div class="col-md-3">
-        
+    <div class="col-md-2" style="border:1px solid;border-color:cornflowerblue">
+        @Html.Action("NavLeftPartial", "Home")
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         @RenderBody()
     </div>
 </body>

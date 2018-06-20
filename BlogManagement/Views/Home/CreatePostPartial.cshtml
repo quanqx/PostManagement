@@ -1,0 +1,91 @@
+﻿@model BlogManagement.DAL.Entities.Post
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <form action="/Home/CreatePostPartial" method="post">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("CategoryId", null, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", cols = "78", rows = "5", placeholder = "Bạn đang nghĩ gì..." })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div id="upload" enctype="multipart/form-data">
+                            <input type="file" name="fileUpload" id="fileUpload" /><br />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Đăng bài viết" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    .modal-body {
+        height: 280px;
+        position: relative;
+        padding: 15px;
+    }
+</style>
+<script>
+    $("#fileUpload").change(function () {
+        var data = new FormData();
+        var files = $("#fileUpload").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("Image", "Post")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                //code xử lý dữ liệu trả về của bạn
+                alert(response);
+                var my_path = "~Content/Image/" + response;
+                //$("#myUploadedImg").attr("src", my_path);
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    });
+</script>

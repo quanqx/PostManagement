@@ -1,0 +1,7 @@
+﻿
+<ul>
+    @foreach (BlogManagement.DAL.Entities.Category lst in ViewBag.lstCategory)
+    {
+        <li style="list-style:none"><a href="/Post/Category/?id=@lst.CategoryId">@lst.Name</a></li>
+    }
+</ul>
