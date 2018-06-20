@@ -11,17 +11,19 @@ namespace BlogManagement.DAL.Entities
         public int AccountId { get; set; }
         public String Content { get; set; }
         public DateTime CommentTime { get; set; }
+        public int PostId { get; set; }
 
         public Comment()
         {
         }
 
-        public Comment(int commentId, int accountId, string content, DateTime commentTime)
+        public Comment(int commentId, int accountId, string content, DateTime commentTime, int postId)
         {
             CommentId = commentId;
             AccountId = accountId;
             Content = content;
             CommentTime = commentTime;
+            PostId = postId;
         }
         
     }
