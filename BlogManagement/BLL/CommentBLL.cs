@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using BlogManagement.DAL.Entities;
 using BlogManagement.DAL.UnitOfWork;
+using BlogManagement.Models;
 
 namespace BlogManagement.BLL
 {
@@ -42,6 +43,11 @@ namespace BlogManagement.BLL
         {
             uow.commentRepository.Update(cmt);
             uow.Save();
+        }
+
+        public IEnumerable<Comment> getCommentByPostId(int id)
+        {
+            return uow.commentRepository.getAll().Where(a => a.PostId == id);
         }
     }
 }

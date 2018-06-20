@@ -1,4 +1,5 @@
 ﻿using BlogManagement.DAL.Entities;
+using BlogManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace BlogManagement.BLL
         void Add(Post post);
         void Update(Post post);
         void Delete(Post post);
+        IEnumerable<Post> getPostsByAccountId(int id);
+        IEnumerable<Post> getPostLimit(int from, int to);
+        IEnumerable<PostModel> getPostModel();
     }
 
 }
